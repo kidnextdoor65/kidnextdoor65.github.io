@@ -3,49 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXE Vietnam | Store Chính Hãng</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>AXE Vietnam | Khẳng Định Bản Lĩnh Phái Mạnh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --axe-neon: #ccff00; --dark-bg: #0a0a0a; --card-bg: #151515; --text-main: #ffffff; --text-muted: #a0a0a0; }
+        :root { --axe-neon: #ccff00; --dark-bg: #050505; --card-bg: #111111; --text-main: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--dark-bg); color: var(--text-main); overflow-x: hidden; }
 
-        /* Navbar & Menu */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; border-bottom: 1px solid #333; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.9em; transition: 0.3s; }
-        .nav-links a:hover { color: var(--axe-neon); }
-        .nav-links a.cv-link { color: var(--axe-neon); border: 1px solid var(--axe-neon); padding: 5px 15px; border-radius: 20px; }
-        .nav-links a.cv-link:hover { background: var(--axe-neon); color: #000; }
+        /* Navbar - 4 Buttons Design */
+        nav { 
+            position: fixed; top: 0; width: 100%; background: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(10px); z-index: 1000; display: flex; 
+            justify-content: space-between; align-items: center; padding: 15px 50px; 
+            border-bottom: 1px solid #222;
+        }
+        .logo-container img { height: 40px; }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-btn { 
+            color: #fff; text-decoration: none; font-weight: 600; text-transform: uppercase; 
+            font-size: 0.9em; transition: 0.3s; position: relative; padding: 8px 0;
+        }
+        .nav-btn::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; 
+            height: 2px; background: var(--axe-neon); transition: 0.3s;
+        }
+        .nav-btn:hover::after { width: 100%; }
+        .nav-btn:hover { color: var(--axe-neon); }
         
+        /* Highlight cho nút CV */
+        .btn-cv {
+            border: 1px solid var(--axe-neon); padding: 8px 20px; border-radius: 20px; 
+            color: var(--axe-neon); background: transparent;
+        }
+        .btn-cv:hover { background: var(--axe-neon); color: #000; }
+        .btn-cv::after { display: none; }
+
+        /* Cart Icon */
+        .cart-wrapper { display: flex; align-items: center; gap: 20px; }
         .cart-icon { font-size: 1.5em; cursor: pointer; position: relative; }
-        .cart-count { position: absolute; top: -5px; right: -10px; background: var(--axe-neon); color: #000; font-size: 0.6em; font-weight: 900; padding: 2px 6px; border-radius: 50%; }
+        .cart-count { 
+            position: absolute; top: -5px; right: -10px; background: var(--axe-neon); 
+            color: #000; font-size: 0.6em; font-weight: 900; padding: 2px 6px; border-radius: 50%; 
+        }
 
-        /* Banner */
-        .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--dark-bg)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1920&auto=format&fit=crop') center/cover; margin-top: 60px; }
-        .hero h1 { font-size: 4em; font-weight: 900; color: var(--axe-neon); text-transform: uppercase; }
+        /* 1. Trang Chủ (Hero Section) */
+        .hero { 
+            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), var(--dark-bg)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1920&auto=format&fit=crop') center/cover; 
+            padding-top: 60px; 
+        }
+        .hero h1 { font-size: 4.5em; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .hero h1 span { color: var(--axe-neon); }
+        .hero p { font-size: 1.2em; max-width: 600px; margin: 0 auto 30px auto; color: #ccc; line-height: 1.6; }
+        .btn-main { 
+            display: inline-block; padding: 15px 40px; background: var(--axe-neon); color: #000; 
+            font-size: 1.1em; font-weight: 900; text-decoration: none; border-radius: 4px; transition: 0.3s; 
+        }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(204,255,0,0.4); }
 
-        /* Trust Badges / Thương hiệu */
-        .usp-section { display: flex; justify-content: center; gap: 50px; padding: 60px 20px; background: #0f0f0f; flex-wrap: wrap; text-align: center; border-bottom: 1px solid #222;}
-        .usp-item { max-width: 250px; }
-        .usp-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
-        .usp-item h3 { color: var(--axe-neon); font-size: 1.1em; margin-bottom: 10px; text-transform: uppercase; }
-        .usp-item p { color: var(--text-muted); font-size: 0.9em; line-height: 1.5; }
+        /* 2. Thương Hiệu (Brand Section) */
+        .brand-section { padding: 100px 20px; background: #0a0a0a; border-bottom: 1px solid #222; }
+        .brand-container { 
+            max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 50px; 
+        }
+        .brand-text { flex: 1; }
+        .brand-text h2 { font-size: 2.5em; font-weight: 900; color: var(--axe-neon); margin-bottom: 20px; text-transform: uppercase; }
+        .brand-text p { font-size: 1.1em; line-height: 1.8; color: #bbb; margin-bottom: 20px; text-align: justify; }
+        .brand-image { flex: 1; position: relative; }
+        .brand-image img { width: 100%; border-radius: 8px; filter: grayscale(20%); transition: 0.5s; }
+        .brand-image img:hover { filter: grayscale(0%); }
+        .tech-box { background: #151515; padding: 20px; border-left: 4px solid var(--axe-neon); margin-top: 30px; }
+        .tech-box h4 { color: #fff; margin-bottom: 10px; font-size: 1.1em; }
 
-        /* Product Grid / Shopping */
-        .products { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .section-title { font-size: 2.5em; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-        .card { background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid #222; transition: 0.3s; position: relative; display: flex; flex-direction: column; justify-content: space-between;}
-        .card:hover { border-color: var(--axe-neon); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(204, 255, 0, 0.1); }
-        .card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 15px; transition: transform 0.5s; }
-        .card:hover img { transform: scale(1.05); }
-        .card h3 { font-size: 1.3em; margin-bottom: 5px; }
-        .price { font-size: 1.5em; font-weight: 900; color: var(--axe-neon); margin: 15px 0; }
-        .btn { padding: 12px 20px; background: var(--axe-neon); color: #000; font-weight: 900; border: none; cursor: pointer; border-radius: 4px; transition: 0.3s; width: 100%; text-transform: uppercase;}
-        .btn:hover { background: #fff; }
+        /* 3. Shopping Section */
+        .shopping-section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2.8em; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--card-bg); padding: 30px 20px; border-radius: 8px; border: 1px solid #222; 
+            transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card:hover { border-color: var(--axe-neon); transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 20px; transition: 0.3s; }
+        .card:hover img { transform: scale(1.1); }
+        .card h3 { font-size: 1.3em; margin-bottom: 10px; }
+        .price { font-size: 1.6em; font-weight: 900; color: var(--axe-neon); margin: 15px 0; }
+        .btn-add { 
+            padding: 15px; background: #222; color: #fff; font-weight: 900; border: none; 
+            cursor: pointer; border-radius: 4px; transition: 0.3s; width: 100%; text-transform: uppercase; 
+        }
+        .btn-add:hover { background: var(--axe-neon); color: #000; }
 
-        /* Cart & Checkout Elements */
+        /* Giỏ hàng CSS (Giữ nguyên như phiên bản trước) */
         .cart-sidebar { position: fixed; top: 0; right: -400px; width: 350px; max-width: 100%; height: 100vh; background: #111; z-index: 1001; transition: 0.4s; padding: 20px; display: flex; flex-direction: column; border-left: 1px solid #333; }
         .cart-sidebar.active { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
@@ -54,68 +103,79 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #1a1a1a; padding: 10px; border-radius: 5px; }
         .cart-item img { width: 50px; height: 50px; object-fit: contain; }
         .cart-item-info { flex-grow: 1; margin-left: 10px; }
-        .cart-item-title { font-size: 0.9em; font-weight: bold; }
-        .cart-item-price { color: var(--axe-neon); font-size: 0.9em; }
-        .remove-btn { background: red; color: white; border: none; padding: 5px 8px; border-radius: 3px; cursor: pointer; font-size: 0.8em; }
+        .cart-item-price { color: var(--axe-neon); font-size: 0.9em; font-weight: bold; }
+        .remove-btn { background: #ff3333; color: white; border: none; padding: 5px 8px; border-radius: 3px; cursor: pointer; font-size: 0.8em; }
         .cart-footer { border-top: 1px solid #333; padding-top: 15px; }
         .total { display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-bottom: 15px; }
-
+        
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .overlay.active { display: block; }
         .checkout-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.8); z-index: 1002; justify-content: center; align-items: center; }
         .checkout-content { background: #151515; padding: 30px; border-radius: 8px; width: 400px; max-width: 90%; border: 1px solid var(--axe-neon); }
         .checkout-content input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; }
-        .checkout-content input:focus { outline: none; border-color: var(--axe-neon); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; }
-        .overlay.active { display: block; }
-        
-        @media (max-width: 768px) { nav { padding: 15px; } .nav-links { display: none; } /* Có thể thêm menu hamburger cho mobile sau */ }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Có thể làm menu hamburger cho mobile sau */
+            .brand-container { flex-direction: column; }
+            .hero h1 { font-size: 3em; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Axe_logo.svg" alt="AXE Logo" width="60">
+        <div class="logo-container">
+            <a href="#home"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Axe_logo.svg" alt="AXE Logo"></a>
+        </div>
         
-        <div class="nav-links">
-            <a href="#home">Trang chủ</a>
-            <a href="#brand">Thương hiệu</a>
-            <a href="#products">Shopping</a>
-            <a href="cv.html" class="cv-link">Cá nhân (CV)</a>
+        <div class="nav-menu">
+            <a href="#home" class="nav-btn">Trang chủ</a>
+            <a href="#brand" class="nav-btn">Thương hiệu</a>
+            <a href="#shopping" class="nav-btn">Shopping</a>
+            <a href="cv.html" class="nav-btn btn-cv">Cá nhân (CV)</a>
         </div>
 
-        <div class="cart-icon" onclick="toggleCart()">
-            🛒<span class="cart-count" id="cart-counter">0</span>
+        <div class="cart-wrapper">
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒<span class="cart-count" id="cart-counter">0</span>
+            </div>
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <h1>SẠCH THƠM 48 GIỜ</h1>
-    </section>
-
-    <section class="usp-section" id="brand">
-        <div class="usp-item">
-            <span class="usp-icon">⏱️</span>
-            <h3>Bảo vệ 48 giờ</h3>
-            <p>Ngăn mùi cơ thể vượt trội, giúp bạn sảng khoái suốt ngày dài năng động.</p>
-        </div>
-        <div class="usp-item">
-            <span class="usp-icon">💎</span>
-            <h3>Hương nước hoa</h3>
-            <p>Được tinh chế bởi các chuyên gia điều hương hàng đầu thế giới.</p>
-        </div>
-        <div class="usp-item">
-            <span class="usp-icon">👕</span>
-            <h3>Khô thoáng</h3>
-            <p>Công thức cải tiến không gây ố vàng hay để lại vệt trắng trên áo.</p>
+    <section id="home" class="hero">
+        <div>
+            <h1>Sạch Thơm <span>48 Giờ</span></h1>
+            <p>Đừng để mùi cơ thể cản bước bạn. Tự tin bứt phá giới hạn, khẳng định khí chất phái mạnh với công nghệ xịt khử mùi tiên tiến nhất từ AXE.</p>
+            <a href="#shopping" class="btn-main">MUA NGAY</a>
         </div>
     </section>
 
-    <section class="products" id="products">
-        <h2 class="section-title">BỘ SƯU TẬP</h2>
+    <section id="brand" class="brand-section">
+        <div class="brand-container">
+            <div class="brand-text">
+                <h2>Bản Lĩnh Không Thỏa Hiệp</h2>
+                <p>Ra mắt lần đầu tiên tại Pháp vào năm 1983, AXE đã nhanh chóng trở thành thương hiệu mùi hương nam giới bán chạy số 1 toàn cầu. Chúng tôi tin rằng sự quyến rũ lớn nhất của một người đàn ông chính là sự tự tin vào bản thân mình.</p>
+                <p>Với các chuyên gia điều hương hàng đầu thế giới, AXE mang đến những nốt hương tinh tế, đẳng cấp, thay thế hoàn toàn nước hoa đắt tiền mà vẫn duy trì sự khô thoáng tuyệt đối.</p>
+                
+                <div class="tech-box">
+                    <h4>🧪 Công nghệ Zinc Neodecanoate</h4>
+                    <p style="font-size: 0.95em; color: #aaa; margin: 0;">Khác với các sản phẩm thông thường chỉ "lấy mùi chèn mùi", công nghệ tiên tiến của AXE trực tiếp tiêu diệt vi khuẩn gây mùi, bảo vệ bạn suốt 48 giờ liên tục và tuyệt đối không để lại vệt trắng ố vàng trên áo sơ mi.</p>
+                </div>
+            </div>
+            <div class="brand-image">
+                <img src="https://images.unsplash.com/photo-1520699049698-acd2fce18736?q=80&w=1000&auto=format&fit=crop" alt="AXE Brand Lifestyle">
+            </div>
+        </div>
+    </section>
+
+    <section id="shopping" class="shopping-section">
+        <h2 class="section-title">AXE STORE</h2>
         <div class="product-grid" id="product-list">
             </div>
     </section>
 
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h2>GIỎ HÀNG</h2>
@@ -124,20 +184,24 @@
         <div class="cart-items" id="cart-items"></div>
         <div class="cart-footer">
             <div class="total"><span>Tổng cộng:</span> <span id="cart-total">0₫</span></div>
-            <button class="btn" onclick="openCheckout()">THANH TOÁN</button>
+            <button class="btn-add" style="background: var(--axe-neon); color: #000;" onclick="openCheckout()">TIẾN HÀNH THANH TOÁN</button>
         </div>
     </div>
 
     <div class="checkout-modal" id="checkout-modal">
         <div class="checkout-content">
-            <h2 style="margin-bottom: 20px; color: var(--axe-neon);">Thông tin giao hàng</h2>
+            <h2 style="margin-bottom: 20px; color: var(--axe-neon);">Xác nhận Đơn hàng</h2>
             <input type="text" id="cus-name" placeholder="Họ và tên" required>
             <input type="text" id="cus-phone" placeholder="Số điện thoại" required>
-            <input type="text" id="cus-address" placeholder="Địa chỉ giao hàng chi tiết" required>
-            <button class="btn" onclick="submitOrder()">XÁC NHẬN ĐẶT HÀNG</button>
-            <button class="btn" style="background: #444; color: #fff; margin-top: 10px;" onclick="closeCheckout()">HỦY BỎ</button>
+            <input type="text" id="cus-address" placeholder="Địa chỉ nhận hàng" required>
+            <button class="btn-add" style="background: var(--axe-neon); color: #000; margin-bottom: 10px;" onclick="submitOrder()">ĐẶT HÀNG NGAY</button>
+            <button class="btn-add" style="background: #333;" onclick="closeCheckout()">HỦY BỎ</button>
         </div>
     </div>
+
+    <footer style="text-align: center; padding: 30px; border-top: 1px solid #222; font-size: 0.9em; color: #777;">
+        &copy; 2026 AXE Vietnam. <br>Được thiết kế và quản lý bởi Nguyễn Hoàng Nam.
+    </footer>
 
     <script>
         const products = [
@@ -151,25 +215,30 @@
 
         let cart = [];
 
+        // Hiển thị sản phẩm
         const productList = document.getElementById('product-list');
         products.forEach(p => {
             productList.innerHTML += `
                 <div class="card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <h3>${p.name}</h3>
-                    <p style="color: #a0a0a0; font-size: 0.9em;">${p.desc}</p>
-                    <div class="price">${p.price.toLocaleString('vi-VN')}₫</div>
-                    <button class="btn" onclick="addToCart(${p.id})">THÊM VÀO GIỎ</button>
+                    <div>
+                        <img src="${p.img}" alt="${p.name}">
+                        <h3>${p.name}</h3>
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 10px;">${p.desc}</p>
+                    </div>
+                    <div>
+                        <div class="price">${p.price.toLocaleString('vi-VN')}₫</div>
+                        <button class="btn-add" onclick="addToCart(${p.id})">THÊM VÀO GIỎ</button>
+                    </div>
                 </div>
             `;
         });
 
+        // Chức năng giỏ hàng
         function addToCart(id) {
             const product = products.find(p => p.id === id);
             const existingItem = cart.find(item => item.id === id);
-            if(existingItem) existingItem.qty += 1;
-            else cart.push({ ...product, qty: 1 });
-            
+            if(existingItem) { existingItem.qty += 1; } 
+            else { cart.push({ ...product, qty: 1 }); }
             updateCartUI();
             document.getElementById('cart-sidebar').classList.add('active');
             document.getElementById('overlay').classList.add('active');
@@ -179,7 +248,6 @@
             const cartItems = document.getElementById('cart-items');
             cartItems.innerHTML = '';
             let total = 0, count = 0;
-
             cart.forEach((item, index) => {
                 total += item.price * item.qty;
                 count += item.qty;
@@ -187,44 +255,35 @@
                     <div class="cart-item">
                         <img src="${item.img}" alt="${item.name}">
                         <div class="cart-item-info">
-                            <div class="cart-item-title">${item.name} (x${item.qty})</div>
+                            <div style="font-size: 0.9em; font-weight: bold;">${item.name} (x${item.qty})</div>
                             <div class="cart-item-price">${(item.price * item.qty).toLocaleString('vi-VN')}₫</div>
                         </div>
                         <button class="remove-btn" onclick="removeItem(${index})">Xóa</button>
                     </div>
                 `;
             });
-
             document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + '₫';
             document.getElementById('cart-counter').innerText = count;
         }
 
         function removeItem(index) { cart.splice(index, 1); updateCartUI(); }
-        function toggleCart() { 
-            document.getElementById('cart-sidebar').classList.toggle('active'); 
-            document.getElementById('overlay').classList.toggle('active'); 
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
         }
-        
         function openCheckout() {
             if(cart.length === 0) return alert("Giỏ hàng đang trống!");
-            toggleCart();
-            document.getElementById('checkout-modal').style.display = 'flex';
+            toggleCart(); document.getElementById('checkout-modal').style.display = 'flex';
         }
         function closeCheckout() { document.getElementById('checkout-modal').style.display = 'none'; }
-
         function submitOrder() {
             const name = document.getElementById('cus-name').value;
             const phone = document.getElementById('cus-phone').value;
             const address = document.getElementById('cus-address').value;
-
             if(!name || !phone || !address) return alert("Vui lòng điền đủ thông tin!");
-            
-            alert(`🎉 Cảm ơn ${name} đã đặt hàng!\nChúng tôi sẽ liên hệ ${phone} để giao đến:\n${address}`);
-            
+            alert("🎉 Đặt hàng thành công! Cảm ơn " + name);
             cart = []; updateCartUI(); closeCheckout();
-            document.getElementById('cus-name').value = '';
-            document.getElementById('cus-phone').value = '';
-            document.getElementById('cus-address').value = '';
+            document.querySelectorAll('.checkout-content input').forEach(input => input.value = '');
         }
     </script>
 </body>
