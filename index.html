@@ -5,146 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AXE Vietnam | Khẳng Định Bản Lĩnh Phái Mạnh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        card: '#151515',
-                        neon: '#ccff00'
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                    }
+                    colors: { primary: '#2563eb', secondary: '#1e40af' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
+    <style>
+        /* Custom scrollbar cho nền sáng */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        ::selection { background-color: #2563eb; color: #fff; }
+        html { scroll-padding-top: 80px; }
+    </style>
 </head>
-<body class="bg-dark text-white font-sans antialiased">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-dark/90 backdrop-blur-md border-b border-neutral-800 py-4 px-6 md:px-12 flex justify-between items-center">
-        <a href="#" class="text-2xl font-black tracking-wider flex items-center gap-2">
-            <span class="text-neon text-3xl">/</span>AXE
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm">
+        <a href="#home" class="text-2xl font-black tracking-wider flex items-center gap-2 text-slate-900">
+            <span class="text-primary text-3xl">/</span>AXE
         </a>
-        <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest">
-            <a href="#home" class="hover:text-neon transition-colors">Trang chủ</a>
-            <a href="#products" class="hover:text-neon transition-colors">Sản phẩm</a>
-            <a href="#about" class="hover:text-neon transition-colors">Về chúng tôi</a>
+        <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest text-slate-600">
+            <a href="#home" class="hover:text-primary transition-colors">Trang chủ</a>
+            <a href="#products" class="hover:text-primary transition-colors">Shopping</a>
+            <a href="cv.html" class="px-4 py-1 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all">Cá nhân (CV)</a>
         </div>
-        <div class="relative cursor-pointer group" id="cart-btn">
-            <i class="fa-solid fa-cart-shopping text-xl group-hover:text-neon transition-colors"></i>
-            <span id="cart-count" class="absolute -top-2 -right-3 bg-neon text-black text-xs font-black px-1.5 py-0.5 rounded-full">0</span>
+        <div class="relative group" id="cart-btn">
+            <i class="fa-solid fa-cart-shopping text-xl text-slate-700"></i>
+            <span id="cart-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
         </div>
     </nav>
 
-    <section id="home" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center opacity-40"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark"></div>
-        <div class="relative z-10 max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-black uppercase mb-6 leading-tight">
-                Sạch Thơm <span class="text-neon text-transparent bg-clip-text bg-gradient-to-r from-neon to-green-400">48 Giờ</span>
+    <section id="home" class="relative pt-32 pb-20 px-6 md:px-12 flex flex-col items-center justify-center text-center overflow-hidden bg-white">
+        <div class="relative z-10 max-w-4xl mx-auto mt-10">
+            <h1 class="text-4xl md:text-6xl font-black uppercase mb-6 leading-tight text-slate-900">
+                Sạch Thơm <span class="text-primary">48 Giờ</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium">
-                Công nghệ Zinc Neodecanoate tiên tiến. Khô thoáng tuyệt đối, tự tin bứt phá giới hạn và làm chủ mọi cuộc chơi.
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+                Công nghệ Zinc Neodecanoate tiên tiến. Không để lại vệt trắng. Tự tin bứt phá giới hạn với hương nước hoa chuẩn phái mạnh.
             </p>
-            <a href="#products" class="inline-block bg-neon text-black font-black uppercase tracking-widest px-10 py-4 rounded hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
-                Khám Phá Ngay
+            <a href="#products" class="inline-block bg-primary text-white font-bold uppercase tracking-widest px-10 py-4 rounded hover:bg-secondary transition-all shadow-lg shadow-blue-500/30">
+                Khám Phá Cửa Hàng
             </a>
         </div>
+        <img src="https://images.unsplash.com/photo-1520699049698-acd2fce18736?q=80&w=1000&auto=format&fit=crop" alt="AXE Banner" class="w-full max-w-5xl rounded-2xl shadow-2xl mt-16 object-cover h-64 md:h-96">
     </section>
 
     <section id="products" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-4">Sản Phẩm <span class="text-neon">Nổi Bật</span></h2>
-            <div class="h-1 w-24 bg-neon mx-auto"></div>
+            <h2 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-4">Sản Phẩm <span class="text-primary">Bán Chạy</span></h2>
+            <div class="h-1 w-24 bg-primary mx-auto rounded"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="product-card group bg-card p-6 rounded-lg border border-neutral-800 hover:border-neon transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full">
-                <div>
-                    <div class="absolute top-4 right-4 bg-neon text-black text-xs font-black px-2 py-1 uppercase rounded">Hot</div>
-                    <img src="https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154724-1215168-png.png" alt="AXE Dark Temptation" class="w-full h-48 object-contain mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <h3 class="text-xl font-bold mb-2">Dark Temptation</h3>
-                    <p class="text-sm text-gray-400 mb-4 h-10">Hương Sô-cô-la đen ngọt ngào, quyến rũ.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-neon mb-6">95.000₫</div>
-                    <button class="w-full bg-neutral-800 text-white font-bold py-3 uppercase rounded hover:bg-neon hover:text-black transition-colors add-to-cart-btn">Thêm vào giỏ</button>
-                </div>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             </div>
 
-            <div class="product-card group bg-card p-6 rounded-lg border border-neutral-800 hover:border-neon transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                    <img src="https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154687-1215160-png.png" alt="AXE Apollo" class="w-full h-48 object-contain mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <h3 class="text-xl font-bold mb-2">AXE Apollo</h3>
-                    <p class="text-sm text-gray-400 mb-4 h-10">Mùi hương nam tính, cổ điển từ Gỗ đàn hương.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-neon mb-6">95.000₫</div>
-                    <button class="w-full bg-neutral-800 text-white font-bold py-3 uppercase rounded hover:bg-neon hover:text-black transition-colors add-to-cart-btn">Thêm vào giỏ</button>
-                </div>
+        <div id="pagination" class="flex justify-center items-center gap-2 mt-16">
             </div>
-
-            <div class="product-card group bg-card p-6 rounded-lg border border-neutral-800 hover:border-neon transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                    <img src="https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154748-1215171-png.png" alt="AXE Ice Chill" class="w-full h-48 object-contain mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <h3 class="text-xl font-bold mb-2">AXE Ice Chill</h3>
-                    <p class="text-sm text-gray-400 mb-4 h-10">Bảo vệ tuyệt đối, khô thoáng tức thì sau những set tập cường độ cao.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-neon mb-6">95.000₫</div>
-                    <button class="w-full bg-neutral-800 text-white font-bold py-3 uppercase rounded hover:bg-neon hover:text-black transition-colors add-to-cart-btn">Thêm vào giỏ</button>
-                </div>
-            </div>
-
-            <div class="product-card group bg-card p-6 rounded-lg border border-neutral-800 hover:border-neon transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                    <img src="https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154700-1215164-png.png" alt="AXE Black" class="w-full h-48 object-contain mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <h3 class="text-xl font-bold mb-2">AXE Black</h3>
-                    <p class="text-sm text-gray-400 mb-4 h-10">Hương Cam Bergamot lịch lãm, tinh tế.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black text-neon mb-6">95.000₫</div>
-                    <button class="w-full bg-neutral-800 text-white font-bold py-3 uppercase rounded hover:bg-neon hover:text-black transition-colors add-to-cart-btn">Thêm vào giỏ</button>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <footer id="about" class="bg-[#050505] border-t border-neutral-900 pt-16 pb-8 px-6 md:px-12 mt-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            <div>
-                <a href="#" class="text-2xl font-black tracking-wider flex items-center gap-2 mb-6">
-                    <span class="text-neon text-3xl">/</span>AXE
-                </a>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Hương nước hoa đẳng cấp, không thỏa hiệp. Phân phối chính hãng các dòng sản phẩm chăm sóc cá nhân dành riêng cho phái mạnh tại Việt Nam.
-                </p>
+    <footer class="bg-slate-900 text-slate-300 py-12 px-6 text-center border-t border-slate-800 mt-12">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-black text-white tracking-widest mb-4">AXE VIETNAM</h3>
+            <p class="mb-8 text-sm">Hương nước hoa đẳng cấp, bảo vệ 48 giờ. Khẳng định khí chất đàn ông.</p>
+            <div class="text-sm text-slate-500">
+                &copy; 2026 AXE Store. Phân phối chính hãng. Thiết kế bởi Nguyễn Hoàng Nam.
             </div>
-            <div>
-                <h4 class="text-lg font-bold mb-6 uppercase tracking-wider">Đăng ký nhận tin</h4>
-                <div class="flex">
-                    <input type="email" placeholder="Email của bạn" class="bg-neutral-900 text-white border border-neutral-700 px-4 py-3 w-full rounded-l focus:outline-none focus:border-neon">
-                    <button class="bg-neon text-black font-bold px-6 py-3 rounded-r hover:bg-white transition-colors">Gửi</button>
-                </div>
-            </div>
-            <div>
-                <h4 class="text-lg font-bold mb-6 uppercase tracking-wider">Kết nối</h4>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center hover:bg-neon hover:text-black transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center hover:bg-neon hover:text-black transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center hover:bg-neon hover:text-black transition-colors"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="text-center text-gray-600 text-sm border-t border-neutral-900 pt-8">
-            &copy; 2026 AXE Store. All rights reserved. Code with 🖤.
         </div>
     </footer>
 
