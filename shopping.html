@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXE Vietnam | Cửa hàng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#2563eb', secondary: '#1e40af' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .modal-active { display: flex !important; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased overflow-x-hidden">
+
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm">
+        <a href="index.html" class="text-2xl font-black tracking-wider flex items-center gap-2 text-slate-900">
+            <span class="text-primary text-3xl">/</span>AXE
+        </a>
+        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-slate-600">
+            <a href="index.html" class="hover:text-primary transition-colors">Trang chủ</a>
+            <a href="shopping.html" class="text-primary border-b-2 border-primary pb-1">Shopping</a>
+            <a href="cv.html" class="hover:text-primary transition-colors">Cá nhân (CV)</a>
+        </div>
+        <div class="relative group cursor-pointer" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping text-xl text-slate-700 group-hover:text-primary transition-colors"></i>
+            <span id="cart-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full shadow-sm">0</span>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 px-6 flex items-center justify-center text-center bg-white border-b border-slate-200">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550505098-dfb9671d2b8b?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-white/70 to-slate-50"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-black uppercase text-slate-900 tracking-wider">
+                Sản Phẩm <span class="text-primary">Bán Chạy</span>
+            </h1>
+            <div class="h-1 w-24 bg-primary mx-auto rounded mt-4"></div>
+        </div>
+    </section>
+
+    <section id="products" class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        <div id="pagination" class="flex justify-center items-center gap-2 mt-16"></div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-300 py-12 px-6 text-center border-t border-slate-800">
+        <div class="text-sm text-slate-500">&copy; 2026 AXE Store. Phân phối chính hãng. Thiết kế bởi Nguyễn Hoàng Nam.</div>
+    </footer>
+
+    <div id="overlay" class="fixed inset-0 bg-slate-900/60 z-50 hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
+
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
+        <div class="flex justify-between items-center p-6 border-b border-slate-100">
+            <h2 class="text-2xl font-black uppercase text-slate-800">Giỏ hàng của bạn</h2>
+            <button onclick="toggleCart()" class="text-slate-400 hover:text-red-500 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+        <div class="p-6 border-t border-slate-100 bg-slate-50">
+            <div class="flex justify-between items-center mb-6 text-lg font-bold text-slate-800">
+                <span>Tổng tạm tính:</span>
+                <span id="cart-total" class="text-primary text-xl">0₫</span>
+            </div>
+            <button onclick="openCheckout()" class="w-full bg-slate-900 text-white font-bold py-4 rounded uppercase hover:bg-primary transition-colors shadow-lg">
+                Tiến Hành Thanh Toán
+            </button>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden">
+            <div class="bg-slate-900 p-6 text-center"><h2 class="text-2xl font-black text-white uppercase">Thông tin nhận hàng</h2></div>
+            <div class="p-6 space-y-4">
+                <input type="text" id="cus-name" class="w-full px-4 py-3 rounded border focus:border-primary" placeholder="Họ và tên *">
+                <input type="tel" id="cus-phone" class="w-full px-4 py-3 rounded border focus:border-primary" placeholder="Số điện thoại *">
+                <input type="text" id="cus-address" class="w-full px-4 py-3 rounded border focus:border-primary" placeholder="Địa chỉ chi tiết *">
+                <div class="pt-4 flex gap-3">
+                    <button onclick="closeCheckout()" class="flex-1 bg-slate-200 font-bold py-3 rounded hover:bg-slate-300">Hủy</button>
+                    <button onclick="submitOrder()" class="flex-1 bg-primary text-white font-bold py-3 rounded hover:bg-secondary">Xác Nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. DỮ LIỆU SẢN PHẨM & LƯU TRỮ LOCALSTORAGE
+        let cart = JSON.parse(localStorage.getItem('axeCart')) || []; // Đọc dữ liệu giỏ hàng cũ
+
+        function saveCart() {
+            localStorage.setItem('axeCart', JSON.stringify(cart)); // Lưu vào máy tính người dùng
+        }
+
+        const baseProducts = [
+            { name: "AXE Apollo", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154687-1215160-png.png", desc: "Hương Gỗ Đàn Hương & Xô Thơm" },
+            { name: "Dark Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154724-1215168-png.png", desc: "Hương Sô-cô-la đen" },
+            { name: "AXE Black", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154700-1215164-png.png", desc: "Hương Cam Bergamot" },
+            { name: "AXE Ice Chill", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154748-1215171-png.png", desc: "Hương Bạc Hà & Chanh Tuyết" },
+            { name: "Gold Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154762-1215175-png.png", desc: "Hương Cam Citrus" },
+            { name: "AXE Click", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/global/pack_shot/8717163693245.png", desc: "Hương Gia Vị & Gỗ Ấm" }
+        ];
+
+        const products = [];
+        for (let i = 1; i <= 24; i++) {
+            let base = baseProducts[(i - 1) % baseProducts.length];
+            products.push({ id: i, name: `${base.name} (Vol.${i})`, price: base.price, img: base.img, desc: base.desc });
+        }
+
+        // 2. PHÂN TRANG
+        const itemsPerPage = 8;
+        let currentPage = 1;
+        const totalPages = Math.ceil(products.length / itemsPerPage);
+
+        function renderProducts(page) {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+            const start = (page - 1) * itemsPerPage;
+            const currentProducts = products.slice(start, start + itemsPerPage);
+
+            currentProducts.forEach(product => {
+                productGrid.innerHTML += `
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-primary transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between group">
+                        <div>
+                            <img src="${product.img}" class="w-full h-48 object-contain mb-6 group-hover:scale-105 transition-transform duration-500">
+                            <h3 class="text-lg font-bold text-slate-800">${product.name}</h3>
+                            <p class="text-sm text-slate-500 mb-4">${product.desc}</p>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-black text-primary mb-4">${product.price.toLocaleString('vi-VN')}₫</div>
+                            <button onclick="addToCart(${product.id}, this)" class="w-full bg-slate-100 text-slate-800 font-bold py-3 uppercase rounded hover:bg-primary hover:text-white transition-colors">
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function renderPagination() {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = i === currentPage ? "w-10 h-10 rounded bg-primary text-white font-bold shadow" : "w-10 h-10 rounded bg-white border hover:bg-slate-100 font-bold";
+                btn.onclick = () => {
+                    if (i !== currentPage) {
+                        currentPage = i; renderProducts(currentPage); renderPagination();
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    }
+                };
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        // 3. LOGIC GIỎ HÀNG
+        function addToCart(id, btnElement) {
+            const product = products.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) existingItem.qty += 1;
+            else cart.push({ ...product, qty: 1 });
+            
+            saveCart(); // Lưu vào bộ nhớ
+            updateCartUI();
+
+            const originalText = btnElement.innerText;
+            btnElement.innerText = 'Đã Thêm ✓';
+            btnElement.classList.replace('bg-slate-100', 'bg-green-500');
+            btnElement.classList.replace('text-slate-800', 'text-white');
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.classList.replace('bg-green-500', 'bg-slate-100');
+                btnElement.classList.replace('text-white', 'text-slate-800');
+            }, 1000);
+            
+            if(!document.getElementById('cart-sidebar').classList.contains('translate-x-0')) toggleCart();
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            let total = 0, count = 0;
+
+            if(cart.length === 0) {
+                cartItems.innerHTML = '<div class="text-center text-slate-500 mt-10">Giỏ hàng đang trống.</div>';
+            } else {
+                cartItems.innerHTML = '';
+                cart.forEach((item, index) => {
+                    total += item.price * item.qty; count += item.qty;
+                    cartItems.innerHTML += `
+                        <div class="flex items-center gap-4 bg-white p-3 rounded-lg border shadow-sm">
+                            <img src="${item.img}" class="w-16 h-16 object-contain bg-slate-50 p-1">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm mb-1">${item.name}</h4>
+                                <div class="text-primary font-bold text-sm">${item.price.toLocaleString('vi-VN')}₫ <span class="text-slate-400 font-normal">x${item.qty}</span></div>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-slate-300 hover:text-red-500 p-2"><i class="fa-solid fa-trash"></i></button>
+                        </div>`;
+                });
+            }
+            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + '₫';
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('translate-x-full');
+            sidebar.classList.toggle('translate-x-0');
+            if(sidebar.classList.contains('translate-x-0')) {
+                overlay.classList.remove('hidden'); setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                overlay.classList.add('opacity-0'); setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        // 4. THANH TOÁN
+        function openCheckout() {
+            if (cart.length === 0) return alert("Giỏ hàng trống!");
+            toggleCart(); document.getElementById('checkout-modal').classList.add('modal-active');
+        }
+        function closeCheckout() { document.getElementById('checkout-modal').classList.remove('modal-active'); }
+        function submitOrder() {
+            const name = document.getElementById('cus-name').value;
+            const phone = document.getElementById('cus-phone').value;
+            const address = document.getElementById('cus-address').value;
+            if (!name || !phone || !address) return alert("Vui lòng điền đủ thông tin!");
+            alert(`🎉 Đặt hàng thành công!\nCảm ơn ${name}. Đơn hàng sẽ đến ${address}.`);
+            cart = []; saveCart(); updateCartUI(); closeCheckout();
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) navbar.classList.add('shadow-md'); else navbar.classList.remove('shadow-md');
+        });
+
+        // Khởi chạy
+        renderProducts(1);
+        renderPagination();
+        updateCartUI();
+    </script>
+</body>
+</html>
