@@ -70,39 +70,39 @@
         let cart = JSON.parse(localStorage.getItem('axeCart')) || [];
         function saveCart() { localStorage.setItem('axeCart', JSON.stringify(cart)); }
 
-         // Data 24 sản phẩm gốc chuẩn
+        // Data 24 sản phẩm gốc chuẩn
         const products = [
             // TIER 1: BẢN TIÊU CHUẨN (95k)
-            { id: 1, name: "AXE Dark Temptation", price: 95000, oldPrice: 120000, badge: "HOT", img: "1.webp", desc: "Bản Tiêu Chuẩn - Hương Sô-cô-la đen" },
-            { id: 2, name: "AXE Apollo", price: 95000, oldPrice: 120000, badge: "", img: "2.webp", desc: "Bản Tiêu Chuẩn - Hương Gỗ Đàn Hương & Xô thơm" },
-            { id: 3, name: "AXE Black", price: 95000, oldPrice: 120000, badge: "", img: "3.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Bergamot & Tuyết tùng" },
-            { id: 4, name: "AXE Gold Temptation", price: 95000, oldPrice: 120000, badge: "", img: "4.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Citrus & Hổ phách" },
-            { id: 5, name: "AXE Excite", price: 95000, oldPrice: 120000, badge: "", img: "5.webp", desc: "Bản Tiêu Chuẩn - Hương Dừa & Tiêu đen" },
-            { id: 6, name: "AXE Click", price: 95000, oldPrice: 120000, badge: "", img: "6.jpg", desc: "Bản Tiêu Chuẩn - Hương Gia Vị & Gỗ Ấm" },
-            { id: 7, name: "AXE Musk", price: 95000, oldPrice: 120000, badge: "", img: "7.jpg", desc: "Bản Tiêu Chuẩn - Hương Xạ hương cổ điển" },
-            { id: 8, name: "AXE Marine", price: 95000, oldPrice: 120000, badge: "", img: "8.webp", desc: "Bản Tiêu Chuẩn - Hương Gió biển mát lạnh" },
+            { id: 1, name: "AXE Dark Temptation", price: 95000, oldPrice: 120000, badge: "HOT", img: "image/1.webp", desc: "Bản Tiêu Chuẩn - Hương Sô-cô-la đen" },
+            { id: 2, name: "AXE Apollo", price: 95000, oldPrice: 120000, badge: "", img: "image/2.webp", desc: "Bản Tiêu Chuẩn - Hương Gỗ Đàn Hương & Xô thơm" },
+            { id: 3, name: "AXE Black", price: 95000, oldPrice: 120000, badge: "", img: "image/3.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Bergamot & Tuyết tùng" },
+            { id: 4, name: "AXE Gold Temptation", price: 95000, oldPrice: 120000, badge: "", img: "image/4.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Citrus & Hổ phách" },
+            { id: 5, name: "AXE Excite", price: 95000, oldPrice: 120000, badge: "", img: "image/5.webp", desc: "Bản Tiêu Chuẩn - Hương Dừa & Tiêu đen" },
+            { id: 6, name: "AXE Click", price: 95000, oldPrice: 120000, badge: "", img: "image/6.jpg", desc: "Bản Tiêu Chuẩn - Hương Gia Vị & Gỗ Ấm" },
+            { id: 7, name: "AXE Musk", price: 95000, oldPrice: 120000, badge: "", img: "image/7.jpg", desc: "Bản Tiêu Chuẩn - Hương Xạ hương cổ điển" },
+            { id: 8, name: "AXE Marine", price: 95000, oldPrice: 120000, badge: "", img: "image/8.webp", desc: "Bản Tiêu Chuẩn - Hương Gió biển mát lạnh" },
             
             // TIER 2: BẢN TƯƠI MÁT/THỂ THAO (105k)
-            { id: 9, name: "AXE Ice Chill", price: 105000, oldPrice: 135000, badge: "COOL", img: "9.webp", desc: "Bản Tươi Mát - Bạc Hà & Chanh Tuyết" },
-            { id: 10, name: "AXE Sport Blast", price: 105000, oldPrice: 135000, badge: "", img: "10.webp", desc: "Bản Thể Thao - Cam quýt dồi dào năng lượng" },
-            { id: 11, name: "Axe Pulse", price: 105000, oldPrice: 135000, badge: "", img: "11.webp", desc: "Bản Tươi Mát - Thảo mộc & Cam cay" },
-            { id: 12, name: "AXE You", price: 105000, oldPrice: 135000, badge: "", img: "12.jpg", desc: "Bản Tươi Mát - Hổ phách & Vanilla ấm" },
-            { id: 13, name: "AXE Blue Lavender", price: 105000, oldPrice: 135000, badge: "", img: "13.webp", desc: "Bản Thể Thao - Xạ hương lạnh & Gừng" },
-            { id: 14, name: "AXE Africa", price: 105000, oldPrice: 135000, badge: "BEST", img: "14.webp", desc: "Bản Tươi Mát - Vanilla & Hoa phong lữ" },
-            { id: 15, name: "AXE Cool Ocean", price: 105000, oldPrice: 135000, badge: "", img: "15.jpg", desc: "Bản Tươi Mát - Bạc Hà hoang dã" },
-            { id: 16, name: "AXE Wild Spice", price: 105000, oldPrice: 135000, badge: "", img: "16.jpg", desc: "Bản Tươi Mát - Gia vị phương Đông" },
+            { id: 9, name: "AXE Ice Chill", price: 105000, oldPrice: 135000, badge: "COOL", img: "image/9.webp", desc: "Bản Tươi Mát - Bạc Hà & Chanh Tuyết" },
+            { id: 10, name: "AXE Sport Blast", price: 105000, oldPrice: 135000, badge: "", img: "image/10.webp", desc: "Bản Thể Thao - Cam quýt dồi dào năng lượng" },
+            { id: 11, name: "Axe Pulse", price: 105000, oldPrice: 135000, badge: "", img: "image/11.webp", desc: "Bản Tươi Mát - Thảo mộc & Cam cay" },
+            { id: 12, name: "AXE You", price: 105000, oldPrice: 135000, badge: "", img: "image/12.jpg", desc: "Bản Tươi Mát - Hổ phách & Vanilla ấm" },
+            { id: 13, name: "AXE Blue Lavender", price: 105000, oldPrice: 135000, badge: "", img: "image/13.webp", desc: "Bản Thể Thao - Xạ hương lạnh & Gừng" },
+            { id: 14, name: "AXE Africa", price: 105000, oldPrice: 135000, badge: "BEST", img: "image/14.webp", desc: "Bản Tươi Mát - Vanilla & Hoa phong lữ" },
+            { id: 15, name: "AXE Cool Ocean", price: 105000, oldPrice: 135000, badge: "", img: "image/15.jpg", desc: "Bản Tươi Mát - Bạc Hà hoang dã" },
+            { id: 16, name: "AXE Wild Spice", price: 105000, oldPrice: 135000, badge: "", img: "image/16.jpg", desc: "Bản Tươi Mát - Gia vị phương Đông" },
 
             // TIER 3: BẢN ĐẶC BIỆT/GIỚI HẠN (115k)
-            { id: 17, name: "AXE Anarchy", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "17.jpg", desc: "Bản Giới Hạn - Lựu đỏ & Gỗ đàn hương" },
-            { id: 18, name: "AXE Peace", price: 115000, oldPrice: 150000, badge: "", img: "18.jpg", desc: "Bản Đặc Biệt - Hoa Violet & Cam chanh" },
-            { id: 19, name: "AXE Collision", price: 115000, oldPrice: 150000, badge: "", img: "19.jpg", desc: "Bản Đột Phá - Da thuộc & Bánh quy" },
-            { id: 20, name: "AXE Skate & Roses", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "20.jpeg", desc: "Bản Giới Hạn - Hoa hồng bụi & Gỗ thông" },
+            { id: 17, name: "AXE Anarchy", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "image/17.jpg", desc: "Bản Giới Hạn - Lựu đỏ & Gỗ đàn hương" },
+            { id: 18, name: "AXE Peace", price: 115000, oldPrice: 150000, badge: "", img: "image/18.jpg", desc: "Bản Đặc Biệt - Hoa Violet & Cam chanh" },
+            { id: 19, name: "AXE Collision", price: 115000, oldPrice: 150000, badge: "", img: "image/19.jpg", desc: "Bản Đột Phá - Da thuộc & Bánh quy" },
+            { id: 20, name: "AXE Skate & Roses", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "image/20.jpeg", desc: "Bản Giới Hạn - Hoa hồng bụi & Gỗ thông" },
 
             // TIER 4: FINE FRAGRANCE - CAO CẤP (125k)
-            { id: 21, name: "AXE Aqua Bergamot", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "21.webp", desc: "Fine Fragrance - Nước hoa tinh dầu Bergamot" },
-            { id: 22, name: "Axe Signature Champion", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "22.webp", desc: "Fine Fragrance - Oải hương xanh & Bạc Hà mát" },
-            { id: 23, name: "AXE Emerald Sage", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "23.webp", desc: "Fine Fragrance - Hoa phong lữ & Gỗ tuyết tùng" },
-            { id: 24, name: "AXE Golden Mango", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "24.webp", desc: "Fine Fragrance - Xoài nhiệt đới & Vanilla" }
+            { id: 21, name: "AXE Aqua Bergamot", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/21.webp", desc: "Fine Fragrance - Nước hoa tinh dầu Bergamot" },
+            { id: 22, name: "Axe Signature Champion", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/22.webp", desc: "Fine Fragrance - Oải hương xanh & Bạc Hà mát" },
+            { id: 23, name: "AXE Emerald Sage", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/23.webp", desc: "Fine Fragrance - Hoa phong lữ & Gỗ tuyết tùng" },
+            { id: 24, name: "AXE Golden Mango", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/24.webp", desc: "Fine Fragrance - Xoài nhiệt đới & Vanilla" }
         ];
 
         const itemsPerPage = 8; let currentPage = 1; const totalPages = Math.ceil(products.length / itemsPerPage);
