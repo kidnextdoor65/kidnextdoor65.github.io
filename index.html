@@ -12,6 +12,7 @@
     </script>
     <style>
         ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #0a0a0a; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: #ccff00; } ::selection { background-color: #ccff00; color: #000; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
     </style>
 </head>
 <body class="bg-dark text-white font-sans antialiased overflow-x-hidden">
@@ -38,17 +39,44 @@
             <h1 class="text-5xl md:text-8xl font-black uppercase mb-6 leading-none text-white tracking-tighter">Bật Khí Chất <br><span class="text-primary">Đàn Ông</span></h1>
             <p class="text-lg md:text-xl text-neutral-300 mb-10 max-w-2xl mx-auto font-medium">Vượt qua mọi rào cản với công nghệ bảo vệ 48 giờ. Mùi hương tinh tế được chế tác bởi các bậc thầy nước hoa hàng đầu thế giới.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="shopping.html" class="inline-block bg-primary text-black font-black uppercase tracking-widest px-10 py-4 rounded hover:bg-white transition-all">Khám phá Store</a>
+                <a href="shopping.html" class="inline-block bg-primary text-black font-black uppercase tracking-widest px-10 py-4 rounded hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.3)]">Khám phá Store</a>
                 <a href="#story" class="inline-block border-2 border-neutral-500 text-white font-bold uppercase tracking-widest px-10 py-4 rounded hover:border-primary hover:text-primary transition-all">Câu chuyện AXE</a>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-card border-y border-neutral-800 relative z-20">
+    <section class="py-8 bg-card border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale">
+            <span class="text-xl font-black uppercase tracking-widest">Men's Health</span>
+            <span class="text-xl font-black uppercase tracking-widest">GQ Magazine</span>
+            <span class="text-xl font-black uppercase tracking-widest">Elle Man</span>
+            <span class="text-xl font-black uppercase tracking-widest">Hypebeast</span>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-dark border-b border-neutral-800 relative z-20">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div class="p-6"><div class="text-5xl mb-6 text-primary"><i class="fa-solid fa-stopwatch"></i></div><h3 class="text-xl font-black uppercase mb-3 tracking-wide">Bảo vệ 48 Giờ</h3><p class="text-neutral-400">Công nghệ Zinc Neodecanoate tiêu diệt vi khuẩn gây mùi, giữ cơ thể khô thoáng.</p></div>
             <div class="p-6"><div class="text-5xl mb-6 text-primary"><i class="fa-solid fa-gem"></i></div><h3 class="text-xl font-black uppercase mb-3 tracking-wide">Hương Nước Hoa</h3><p class="text-neutral-400">Được tinh chế chuyên biệt, mang lại những tầng hương nam tính, cuốn hút.</p></div>
-            <div class="p-6"><div class="text-5xl mb-6 text-primary"><i class="fa-solid fa-shirt"></i></div><h3 class="text-xl font-black uppercase mb-3 tracking-wide">Không Ố Vàng</h3><p class="text-neutral-400">Công thức tàng hình không để lại vệt trắng hay làm ố vàng nách áo.</p></div>
+            <div class="p-6"><div class="text-5xl mb-6 text-primary"><i class="fa-solid fa-shirt"></i></div><h3 class="text-xl font-black uppercase mb-3 tracking-wide">Không Ố Vàng</h3><p class="text-neutral-400">Công thức tàng hình không để lại vệt trắng hay làm ố vàng nách áo sơ mi.</p></div>
+        </div>
+    </section>
+
+    <section id="story" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -inset-4 border-2 border-primary rounded-lg transform translate-x-4 translate-y-4 -z-10"></div>
+                <img src="https://images.unsplash.com/photo-1520699049698-acd2fce18736?q=80&w=1000&auto=format&fit=crop" alt="AXE Lifestyle" class="w-full rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-2">Ra đời tại Pháp (1983)</h2>
+                <h3 class="text-4xl font-black uppercase mb-6 leading-tight text-white">Sự Tự Tin Là <br>Vũ Khí Sắc Bén Nhất</h3>
+                <p class="text-neutral-400 mb-6 text-lg">Chúng tôi tin rằng sự quyến rũ thực sự của một người đàn ông đến từ sự tự tin vào chính bản thân mình. Không cần phải cố gắng trở thành một ai khác.</p>
+                <p class="text-neutral-400 mb-8 text-lg">AXE đồng hành cùng bạn trong hành trình phá vỡ những định kiến, thể hiện cá tính riêng và làm chủ mọi cuộc chơi. Bạn chỉ cần là chính bạn, phần còn lại hãy để AXE lo.</p>
+                <a href="shopping.html" class="inline-flex items-center gap-2 text-primary font-bold uppercase hover:text-white transition-colors border-b border-primary pb-1">
+                    Khám phá bộ sưu tập <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -62,10 +90,126 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-neutral-400 py-12 px-6 border-t border-neutral-900 text-sm text-center">
+    <section class="py-24 px-6 bg-dark border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-4">Được Khẳng Định Bởi <br><span class="text-primary">Phái Mạnh</span></h2>
+                <p class="text-neutral-400">Hơn 50,000+ khách hàng tại Việt Nam đã trải nghiệm và hài lòng.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-xl border border-neutral-800 relative hover:border-primary transition-colors">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center font-black text-primary text-xl">T</div>
+                            <div>
+                                <h4 class="font-bold text-white uppercase tracking-wide text-sm">Minh Tuấn</h4>
+                                <span class="text-xs text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Đã mua hàng</span>
+                            </div>
+                        </div>
+                        <div class="text-primary text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2">Dark Temptation thực sự cuốn!</h5>
+                    <p class="text-neutral-400 text-sm leading-relaxed">"Mình làm sale phải đi lại nhiều, dùng em này từ sáng đến tối mịt đi gym xong mà mùi chocolate vẫn thoang thoảng. Khô thoáng cực kỳ, không hề bết rít."</p>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl border border-neutral-800 relative hover:border-primary transition-colors">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center font-black text-primary text-xl">B</div>
+                            <div>
+                                <h4 class="font-bold text-white uppercase tracking-wide text-sm">Hoàng Bách</h4>
+                                <span class="text-xs text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Đã mua hàng</span>
+                            </div>
+                        </div>
+                        <div class="text-primary text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2">Cứu tinh cho áo sơ mi trắng</h5>
+                    <p class="text-neutral-400 text-sm leading-relaxed">"Trải nghiệm bản Ice Chill mát lạnh, xịt phát tỉnh người. Thích nhất là mặc áo sơ mi trắng đi làm không bao giờ bị ố vàng nách áo như mấy loại lăn thông thường."</p>
+                </div>
+
+                <div class="bg-card p-8 rounded-xl border border-neutral-800 relative hover:border-primary transition-colors">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center font-black text-primary text-xl">H</div>
+                            <div>
+                                <h4 class="font-bold text-white uppercase tracking-wide text-sm">Trần Hải</h4>
+                                <span class="text-xs text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Đã mua hàng</span>
+                            </div>
+                        </div>
+                        <div class="text-primary text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i></div>
+                    </div>
+                    <h5 class="font-bold text-white mb-2">Đẳng cấp Fine Fragrance</h5>
+                    <p class="text-neutral-400 text-sm leading-relaxed">"Mới tậu chai Aqua Bergamot bản cao cấp. Mùi hương không khác gì nước hoa đắt tiền, sang và lưu hương lâu. Sẽ ủng hộ shop dài dài."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-card border-t border-neutral-800">
         <div class="max-w-4xl mx-auto">
-            <h3 class="text-2xl font-black text-white tracking-widest mb-4"><span class="text-primary">/</span>AXE</h3>
-            <p>&copy; 2026 AXE Store Vietnam. Thiết kế bởi Nguyễn Hoàng Nam.</p>
+            <h2 class="text-3xl font-black uppercase text-center mb-12 text-white">Câu Hỏi <span class="text-primary">Thường Gặp</span></h2>
+            
+            <div class="space-y-4">
+                <div class="border border-neutral-800 rounded-lg bg-dark">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-white focus:outline-none hover:text-primary transition-colors">
+                        Sản phẩm có làm ố vàng nách áo không?
+                        <i class="fa-solid fa-plus text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="pb-5 text-neutral-400 text-sm leading-relaxed">Không. Xịt khử mùi AXE sử dụng công thức đột phá, không chứa muối nhôm gây hại, cam kết tàng hình trên da và tuyệt đối không để lại vệt trắng hay gây ố vàng trên áo sơ mi.</p>
+                    </div>
+                </div>
+
+                <div class="border border-neutral-800 rounded-lg bg-dark">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-white focus:outline-none hover:text-primary transition-colors">
+                        Thời gian lưu hương thực tế là bao lâu?
+                        <i class="fa-solid fa-plus text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="pb-5 text-neutral-400 text-sm leading-relaxed">Với công nghệ Zinc Neodecanoate, sản phẩm giúp ngăn mùi cơ thể suốt 48 giờ. Về độ lưu hương, các tầng hương nước hoa của AXE có thể duy trì từ 8 - 12 tiếng tùy thuộc vào cường độ vận động và cơ địa mỗi người.</p>
+                    </div>
+                </div>
+
+                <div class="border border-neutral-800 rounded-lg bg-dark">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-white focus:outline-none hover:text-primary transition-colors">
+                        Thời gian giao hàng là bao lâu?
+                        <i class="fa-solid fa-plus text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6">
+                        <p class="pb-5 text-neutral-400 text-sm leading-relaxed">Đơn hàng nội thành (Hà Nội, TP.HCM, Đà Nẵng) sẽ nhận trong 1-2 ngày. Các tỉnh thành khác thời gian nhận hàng từ 3-4 ngày làm việc. Đặc biệt, freeship cho mọi đơn hàng từ 199.000₫.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-neutral-400 py-16 px-6 border-t border-neutral-900 text-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="text-2xl font-black text-white tracking-widest mb-4 flex items-center gap-2">
+                    <span class="text-primary">/</span>AXE
+                </h3>
+                <p class="mb-6 max-w-sm">Thương hiệu xịt khử mùi nam bán chạy số 1 toàn cầu. Khẳng định khí chất, bứt phá giới hạn.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider mb-4">Sản Phẩm</h4>
+                <ul class="space-y-2">
+                    <li><a href="shopping.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+                    <li><a href="shopping.html" class="hover:text-primary transition-colors">Bộ Sưu Tập Mới</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-wider mb-4">Hỗ Trợ</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-primary transition-colors">Chính Sách Đổi Trả</a></li>
+                    <li><a href="cv.html" class="hover:text-primary transition-colors">Liên Hệ Đội Ngũ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+            <div>&copy; 2026 AXE Store Vietnam. All rights reserved.</div>
+            <div>Thiết kế và quản trị bởi Nguyễn Hoàng Nam.</div>
         </div>
     </footer>
 
@@ -75,7 +219,7 @@
         <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
         <div class="p-6 border-t border-neutral-800 bg-dark">
             <div class="flex justify-between items-center mb-6 text-lg font-bold text-white"><span>Tạm tính:</span><span id="cart-total" class="text-primary text-xl">0₫</span></div>
-            <a href="shopping.html" class="block text-center w-full bg-primary text-black font-black py-4 rounded uppercase hover:bg-white">Đến trang Thanh Toán</a>
+            <a href="shopping.html" class="block text-center w-full bg-primary text-black font-black py-4 rounded uppercase hover:bg-white transition-colors">Đến trang Thanh Toán</a>
         </div>
     </div>
 
@@ -83,43 +227,13 @@
         let cart = JSON.parse(localStorage.getItem('axeCart')) || [];
         function saveCart() { localStorage.setItem('axeCart', JSON.stringify(cart)); }
 
-        // Data 24 sản phẩm gốc chuẩn
-        const products = [
-            // TIER 1: BẢN TIÊU CHUẨN (95k)
+        // Chọn lọc 4 sản phẩm tiêu biểu cho trang chủ (Đại diện cho các phân khúc giá)
+        const featuredProducts = [
             { id: 1, name: "AXE Dark Temptation", price: 95000, oldPrice: 120000, badge: "HOT", img: "image/1.webp", desc: "Bản Tiêu Chuẩn - Hương Sô-cô-la đen" },
             { id: 2, name: "AXE Apollo", price: 95000, oldPrice: 120000, badge: "", img: "image/2.webp", desc: "Bản Tiêu Chuẩn - Hương Gỗ Đàn Hương & Xô thơm" },
-            { id: 3, name: "AXE Black", price: 95000, oldPrice: 120000, badge: "", img: "image/3.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Bergamot & Tuyết tùng" },
-            { id: 4, name: "AXE Gold Temptation", price: 95000, oldPrice: 120000, badge: "", img: "image/4.webp", desc: "Bản Tiêu Chuẩn - Hương Cam Citrus & Hổ phách" },
-            { id: 5, name: "AXE Excite", price: 95000, oldPrice: 120000, badge: "", img: "image/5.webp", desc: "Bản Tiêu Chuẩn - Hương Dừa & Tiêu đen" },
-            { id: 6, name: "AXE Click", price: 95000, oldPrice: 120000, badge: "", img: "image/6.jpg", desc: "Bản Tiêu Chuẩn - Hương Gia Vị & Gỗ Ấm" },
-            { id: 7, name: "AXE Musk", price: 95000, oldPrice: 120000, badge: "", img: "image/7.jpg", desc: "Bản Tiêu Chuẩn - Hương Xạ hương cổ điển" },
-            { id: 8, name: "AXE Marine", price: 95000, oldPrice: 120000, badge: "", img: "image/8.webp", desc: "Bản Tiêu Chuẩn - Hương Gió biển mát lạnh" },
-            
-            // TIER 2: BẢN TƯƠI MÁT/THỂ THAO (105k)
             { id: 9, name: "AXE Ice Chill", price: 105000, oldPrice: 135000, badge: "COOL", img: "image/9.webp", desc: "Bản Tươi Mát - Bạc Hà & Chanh Tuyết" },
-            { id: 10, name: "AXE Sport Blast", price: 105000, oldPrice: 135000, badge: "", img: "image/10.webp", desc: "Bản Thể Thao - Cam quýt dồi dào năng lượng" },
-            { id: 11, name: "Axe Pulse", price: 105000, oldPrice: 135000, badge: "", img: "image/11.webp", desc: "Bản Tươi Mát - Thảo mộc & Cam cay" },
-            { id: 12, name: "AXE You", price: 105000, oldPrice: 135000, badge: "", img: "image/12.jpg", desc: "Bản Tươi Mát - Hổ phách & Vanilla ấm" },
-            { id: 13, name: "AXE Blue Lavender", price: 105000, oldPrice: 135000, badge: "", img: "image/13.webp", desc: "Bản Thể Thao - Xạ hương lạnh & Gừng" },
-            { id: 14, name: "AXE Africa", price: 105000, oldPrice: 135000, badge: "BEST", img: "image/14.webp", desc: "Bản Tươi Mát - Vanilla & Hoa phong lữ" },
-            { id: 15, name: "AXE Cool Ocean", price: 105000, oldPrice: 135000, badge: "", img: "image/15.jpg", desc: "Bản Tươi Mát - Bạc Hà hoang dã" },
-            { id: 16, name: "AXE Wild Spice", price: 105000, oldPrice: 135000, badge: "", img: "image/16.jpg", desc: "Bản Tươi Mát - Gia vị phương Đông" },
-
-            // TIER 3: BẢN ĐẶC BIỆT/GIỚI HẠN (115k)
-            { id: 17, name: "AXE Anarchy", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "image/17.jpg", desc: "Bản Giới Hạn - Lựu đỏ & Gỗ đàn hương" },
-            { id: 18, name: "AXE Peace", price: 115000, oldPrice: 150000, badge: "", img: "image/18.jpg", desc: "Bản Đặc Biệt - Hoa Violet & Cam chanh" },
-            { id: 19, name: "AXE Collision", price: 115000, oldPrice: 150000, badge: "", img: "image/19.jpg", desc: "Bản Đột Phá - Da thuộc & Bánh quy" },
-            { id: 20, name: "AXE Skate & Roses", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "image/20.jpeg", desc: "Bản Giới Hạn - Hoa hồng bụi & Gỗ thông" },
-
-            // TIER 4: FINE FRAGRANCE - CAO CẤP (125k)
             { id: 21, name: "AXE Aqua Bergamot", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/21.webp", desc: "Fine Fragrance - Nước hoa tinh dầu Bergamot" },
-            { id: 22, name: "Axe Signature Champion", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/22.webp", desc: "Fine Fragrance - Oải hương xanh & Bạc Hà mát" },
-            { id: 23, name: "AXE Emerald Sage", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/23.webp", desc: "Fine Fragrance - Hoa phong lữ & Gỗ tuyết tùng" },
-            { id: 24, name: "AXE Golden Mango", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "image/24.webp", desc: "Fine Fragrance - Xoài nhiệt đới & Vanilla" }
         ];
-
-        // Lấy 4 sản phẩm đầu tiên hiển thị trang chủ
-        const featuredProducts = products.slice(0, 4);
 
         const grid = document.getElementById('featured-products');
         featuredProducts.forEach(product => {
@@ -131,7 +245,7 @@
                     <div>
                         <div class="h-48 w-full mb-6 relative overflow-hidden bg-white/5 rounded flex items-center justify-center">
                             <img src="${product.img}" alt="${product.name}" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 fallback-img">
-                            <span class="absolute text-neutral-600 text-xs hidden-if-img-loads"> ${product.id}</span>
+                            <span class="absolute text-neutral-600 text-xs hidden-if-img-loads">Ảnh sản phẩm ${product.id}</span>
                         </div>
                         <h3 class="text-lg font-bold text-white mb-1">${product.name}</h3>
                         <p class="text-sm text-neutral-500 mb-4 h-10">${product.desc}</p>
@@ -143,26 +257,41 @@
                 </div>`;
         });
 
-        // Xử lý lỗi ảnh (Hiện chữ thay thế nếu link ảnh chưa có thật)
+        // Fallback Img
         document.querySelectorAll('.fallback-img').forEach(img => {
             img.onerror = function() { this.style.display = 'none'; this.nextElementSibling.style.display = 'block'; };
         });
 
+        // FAQ Accordion Logic
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('text-primary');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('rotate-45');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Cart Logic
         function addToCart(id, btnElement) {
-            const product = products.find(p => p.id === id);
+            const product = featuredProducts.find(p => p.id === id);
             const existingItem = cart.find(item => item.id === id);
             if (existingItem) existingItem.qty += 1; else cart.push({ ...product, qty: 1 });
             saveCart(); updateCartUI();
             const originalText = btnElement.innerText;
-            btnElement.innerText = 'Đã Thêm ✓';
-            btnElement.classList.replace('bg-neutral-800', 'bg-white'); btnElement.classList.replace('text-white', 'text-black');
+            btnElement.innerText = 'Đã Thêm ✓'; btnElement.classList.replace('bg-neutral-800', 'bg-white'); btnElement.classList.replace('text-white', 'text-black');
             setTimeout(() => { btnElement.innerText = originalText; btnElement.classList.replace('bg-white', 'bg-neutral-800'); btnElement.classList.replace('text-black', 'text-white'); }, 1000);
             if(!document.getElementById('cart-sidebar').classList.contains('translate-x-0')) toggleCart();
         }
 
         function updateCartUI() {
-            const cartItems = document.getElementById('cart-items');
-            let total = 0, count = 0;
+            const cartItems = document.getElementById('cart-items'); let total = 0, count = 0;
             if(cart.length === 0) { cartItems.innerHTML = '<div class="text-center text-neutral-600 mt-10">Giỏ hàng đang trống.</div>'; } 
             else {
                 cartItems.innerHTML = '';
@@ -170,16 +299,13 @@
                     total += item.price * item.qty; count += item.qty;
                     cartItems.innerHTML += `
                         <div class="flex items-center gap-4 bg-dark p-3 rounded-lg border border-neutral-800">
-                            <div class="w-16 h-16 bg-white/10 rounded flex items-center justify-center overflow-hidden">
-                                <img src="${item.img}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'">
-                            </div>
+                            <div class="w-16 h-16 bg-white/10 rounded flex items-center justify-center overflow-hidden"><img src="${item.img}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'"></div>
                             <div class="flex-1"><h4 class="font-bold text-sm text-white mb-1">${item.name}</h4><div class="text-primary font-bold text-sm">${item.price.toLocaleString('vi-VN')}₫ <span class="text-neutral-500 font-normal">x${item.qty}</span></div></div>
                             <button onclick="removeFromCart(${index})" class="text-neutral-600 hover:text-red-500 p-2"><i class="fa-solid fa-trash"></i></button>
                         </div>`;
                 });
             }
-            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + '₫';
-            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + '₫'; document.getElementById('cart-count').innerText = count;
         }
 
         function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); }
@@ -195,6 +321,7 @@
             if (window.scrollY > 30) { navbar.classList.add('shadow-md'); navbar.style.top = '0px'; } 
             else { navbar.classList.remove('shadow-md'); navbar.style.top = window.innerWidth < 768 ? '32px' : '36px'; }
         });
+        
         updateCartUI();
     </script>
 </body>
