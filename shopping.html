@@ -54,7 +54,7 @@
             <h1 class="text-4xl md:text-5xl font-black uppercase tracking-widest text-white">
                 Cửa Hàng <span class="text-primary">AXE</span>
             </h1>
-            <p class="mt-4 text-neutral-400 max-w-xl mx-auto">Chọn vũ khí mùi hương của riêng bạn. Bảo vệ tuyệt đối, tự tin dẫn lối.</p>
+            <p class="mt-4 text-neutral-400 max-w-xl mx-auto">Chọn vũ khí mùi hương của riêng bạn. Phân cấp đa dạng, từ tiêu chuẩn đến cao cấp.</p>
         </div>
     </section>
 
@@ -103,18 +103,9 @@
                 <h2 class="text-2xl font-black text-white uppercase tracking-wider">Nhận Hàng</h2>
             </div>
             <div class="p-6 space-y-4">
-                <div>
-                    <label class="block text-sm font-bold text-neutral-400 mb-2">Họ và Tên *</label>
-                    <input type="text" id="cus-name" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="Nguyễn Văn A">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-neutral-400 mb-2">Số điện thoại *</label>
-                    <input type="tel" id="cus-phone" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="09xxxxxxx">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-neutral-400 mb-2">Địa chỉ chi tiết *</label>
-                    <input type="text" id="cus-address" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="Số nhà, Tên đường...">
-                </div>
+                <input type="text" id="cus-name" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="Họ và tên *">
+                <input type="tel" id="cus-phone" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="Số điện thoại *">
+                <input type="text" id="cus-address" class="w-full px-4 py-3 bg-dark text-white rounded border border-neutral-700 focus:outline-none focus:border-primary" placeholder="Địa chỉ chi tiết *">
                 <div class="pt-6 flex gap-3">
                     <button onclick="closeCheckout()" class="flex-1 bg-neutral-800 text-white font-bold py-3 rounded uppercase hover:bg-neutral-700 transition-colors">Hủy</button>
                     <button onclick="submitOrder()" class="flex-1 bg-primary text-black font-black py-3 rounded uppercase hover:bg-white transition-colors">Đặt Hàng</button>
@@ -124,27 +115,25 @@
     </div>
 
     <script>
-        // 1. DATA GIỎ HÀNG TỪ LOCAL STORAGE
         let cart = JSON.parse(localStorage.getItem('axeCart')) || [];
         function saveCart() { localStorage.setItem('axeCart', JSON.stringify(cart)); }
 
-        // 2. TẠO 24 SẢN PHẨM (Đảm bảo ID 1-4 khớp với trang chủ để không bị lỗi giỏ hàng)
+        // MẢNG DỮ LIỆU SẢN PHẨM PHÂN CẤP GIÁ VÀ BADGE
         const baseProducts = [
-            { name: "AXE Dark Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154724-1215168-png.png", desc: "Hương Sô-cô-la đen" },
-            { name: "AXE Apollo", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154687-1215160-png.png", desc: "Hương Gỗ Đàn Hương & Xô Thơm" },
-            { name: "AXE Ice Chill", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154748-1215171-png.png", desc: "Hương Bạc Hà & Chanh Tuyết" },
-            { name: "AXE Black", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154700-1215164-png.png", desc: "Hương Cam Bergamot" },
-            { name: "Gold Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154762-1215175-png.png", desc: "Hương Cam Citrus" },
-            { name: "AXE Click", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/global/pack_shot/8717163693245.png", desc: "Hương Gia Vị & Gỗ Ấm" }
+            { name: "AXE Dark Temptation", price: 95000, oldPrice: 120000, badge: "HOT", img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154724-1215168-png.png", desc: "Bản Tiêu Chuẩn - Hương Sô-cô-la đen" },
+            { name: "AXE Apollo", price: 95000, oldPrice: 120000, badge: "", img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154687-1215160-png.png", desc: "Bản Tiêu Chuẩn - Hương Gỗ Đàn Hương" },
+            { name: "AXE Ice Chill", price: 105000, oldPrice: 135000, badge: "COOL", img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154748-1215171-png.png", desc: "Bản Tươi Mát - Bạc Hà & Chanh Tuyết" },
+            { name: "AXE Black", price: 95000, oldPrice: 120000, badge: "", img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154700-1215164-png.png", desc: "Bản Tiêu Chuẩn - Hương Cam Bergamot" },
+            { name: "Gold Temptation", price: 125000, oldPrice: 165000, badge: "PREMIUM", img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154762-1215175-png.png", desc: "Bản Cao Cấp - Hương Cam Citrus" },
+            { name: "AXE Click", price: 115000, oldPrice: 150000, badge: "LIMITED", img: "https://www.axe.com/content/dam/unilever/axe/global/pack_shot/8717163693245.png", desc: "Bản Giới Hạn - Hương Gia Vị & Gỗ" }
         ];
 
         const products = [];
         for (let i = 1; i <= 24; i++) {
             let base = baseProducts[(i - 1) % baseProducts.length];
-            products.push({ id: i, name: `${base.name} (Vol.${i})`, price: base.price, img: base.img, desc: base.desc });
+            products.push({ id: i, name: `${base.name} (Vol.${i})`, price: base.price, oldPrice: base.oldPrice, badge: base.badge, img: base.img, desc: base.desc });
         }
 
-        // 3. LOGIC PHÂN TRANG (PAGINATION)
         const itemsPerPage = 8;
         let currentPage = 1;
         const totalPages = Math.ceil(products.length / itemsPerPage);
@@ -156,15 +145,22 @@
             const currentProducts = products.slice(start, start + itemsPerPage);
 
             currentProducts.forEach(product => {
+                // Xử lý huy hiệu (Badge) và giá cũ (Old Price)
+                let badgeHtml = product.badge ? `<div class="absolute top-4 right-4 text-xs font-bold bg-primary text-black px-2 py-1 uppercase rounded z-10">${product.badge}</div>` : '';
+                let oldPriceHtml = product.oldPrice ? `<span class="text-neutral-500 line-through text-sm ml-2 font-normal">${product.oldPrice.toLocaleString('vi-VN')}₫</span>` : '';
+
                 productGrid.innerHTML += `
-                    <div class="bg-dark p-6 rounded-xl border border-neutral-800 hover:border-primary transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative bg-dark p-6 rounded-xl border border-neutral-800 hover:border-primary transition-all duration-300 flex flex-col justify-between group">
+                        ${badgeHtml}
                         <div>
                             <img src="${product.img}" class="w-full h-48 object-contain mb-6 group-hover:scale-105 transition-transform duration-500">
                             <h3 class="text-lg font-bold text-white mb-1">${product.name}</h3>
                             <p class="text-sm text-neutral-500 mb-4">${product.desc}</p>
                         </div>
                         <div>
-                            <div class="text-2xl font-black text-primary mb-4">${product.price.toLocaleString('vi-VN')}₫</div>
+                            <div class="text-2xl font-black text-primary mb-4 flex items-end">
+                                ${product.price.toLocaleString('vi-VN')}₫ ${oldPriceHtml}
+                            </div>
                             <button onclick="addToCart(${product.id}, this)" class="w-full bg-neutral-800 text-white font-bold py-3 uppercase rounded hover:bg-primary hover:text-black transition-colors">
                                 Thêm vào giỏ
                             </button>
@@ -195,7 +191,7 @@
             }
         }
 
-        // 4. LOGIC GIỎ HÀNG
+        // LOGIC GIỎ HÀNG
         function addToCart(id, btnElement) {
             const product = products.find(p => p.id === id);
             const existingItem = cart.find(item => item.id === id);
@@ -242,9 +238,7 @@
             document.getElementById('cart-count').innerText = count;
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1); saveCart(); updateCartUI();
-        }
+        function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); }
 
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
@@ -258,7 +252,6 @@
             }
         }
 
-        // 5. THANH TOÁN
         function openCheckout() {
             if (cart.length === 0) return alert("Giỏ hàng đang trống!");
             toggleCart(); document.getElementById('checkout-modal').classList.add('modal-active');
@@ -273,24 +266,15 @@
             alert(`🎉 Đặt hàng thành công!\nCảm ơn ${name}. Đơn hàng sẽ được giao đến ${address}.`);
             
             cart = []; saveCart(); updateCartUI(); closeCheckout();
-            document.getElementById('cus-name').value = '';
-            document.getElementById('cus-phone').value = '';
-            document.getElementById('cus-address').value = '';
+            document.getElementById('cus-name').value = ''; document.getElementById('cus-phone').value = ''; document.getElementById('cus-address').value = '';
         }
 
-        // 6. HIỆU ỨNG NAVBAR (Tương thích với thanh Announcement Bar)
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 30) {
-                navbar.classList.add('shadow-md');
-                navbar.style.top = '0px';
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.style.top = window.innerWidth < 768 ? '32px' : '36px'; 
-            }
+            if (window.scrollY > 30) { navbar.classList.add('shadow-md'); navbar.style.top = '0px'; } 
+            else { navbar.classList.remove('shadow-md'); navbar.style.top = window.innerWidth < 768 ? '32px' : '36px'; }
         });
 
-        // INIT
         renderProducts(1);
         renderPagination();
         updateCartUI();
