@@ -3,132 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Hoàng Nam - Portfolio & CV</title>
+    <title>AXE Vietnam | Store Chính Hãng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0f172a; --secondary: #3b82f6; --text: #334155; --bg: #f1f5f9; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 20px; }
-        .container { max-width: 950px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid var(--secondary); padding-bottom: 20px; margin-bottom: 30px; }
-        .header-left h1 { margin: 0; color: var(--primary); font-size: 2.8em; text-transform: uppercase; letter-spacing: 1px; }
-        .header-left p { font-size: 1.2em; color: var(--secondary); font-weight: bold; margin: 5px 0 0 0; }
-        .header-right { text-align: right; font-size: 0.95em; }
-        h2 { border-left: 4px solid var(--secondary); padding-left: 12px; color: var(--primary); margin-top: 35px; text-transform: uppercase; font-size: 1.3em; letter-spacing: 0.5px; }
-        .grid-2-col { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-        .item { margin-bottom: 25px; }
-        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
-        .item-title { font-weight: 700; font-size: 1.1em; color: var(--primary); }
-        .item-date { color: #64748b; font-size: 0.9em; font-weight: 600; }
-        .item-subtitle { color: var(--secondary); font-style: italic; font-size: 0.95em; margin-bottom: 10px; }
-        ul { padding-left: 18px; margin-top: 5px; }
-        li { margin-bottom: 6px; text-align: justify; }
-        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .tag { background: #e2e8f0; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
-        .hobby-list p { margin: 5px 0; font-size: 0.95em; }
-        @media (max-width: 768px) { .grid-2-col { grid-template-columns: 1fr; } .header { flex-direction: column; align-items: flex-start; gap: 15px; } .header-right { text-align: left; } }
+        :root { --axe-neon: #ccff00; --dark-bg: #0a0a0a; --card-bg: #151515; --text-main: #ffffff; --text-muted: #a0a0a0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--dark-bg); color: var(--text-main); overflow-x: hidden; }
+
+        /* Navbar & Menu */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; border-bottom: 1px solid #333; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.9em; transition: 0.3s; }
+        .nav-links a:hover { color: var(--axe-neon); }
+        .nav-links a.cv-link { color: var(--axe-neon); border: 1px solid var(--axe-neon); padding: 5px 15px; border-radius: 20px; }
+        .nav-links a.cv-link:hover { background: var(--axe-neon); color: #000; }
+        
+        .cart-icon { font-size: 1.5em; cursor: pointer; position: relative; }
+        .cart-count { position: absolute; top: -5px; right: -10px; background: var(--axe-neon); color: #000; font-size: 0.6em; font-weight: 900; padding: 2px 6px; border-radius: 50%; }
+
+        /* Banner */
+        .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--dark-bg)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1920&auto=format&fit=crop') center/cover; margin-top: 60px; }
+        .hero h1 { font-size: 4em; font-weight: 900; color: var(--axe-neon); text-transform: uppercase; }
+
+        /* Trust Badges / Thương hiệu */
+        .usp-section { display: flex; justify-content: center; gap: 50px; padding: 60px 20px; background: #0f0f0f; flex-wrap: wrap; text-align: center; border-bottom: 1px solid #222;}
+        .usp-item { max-width: 250px; }
+        .usp-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
+        .usp-item h3 { color: var(--axe-neon); font-size: 1.1em; margin-bottom: 10px; text-transform: uppercase; }
+        .usp-item p { color: var(--text-muted); font-size: 0.9em; line-height: 1.5; }
+
+        /* Product Grid / Shopping */
+        .products { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2.5em; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid #222; transition: 0.3s; position: relative; display: flex; flex-direction: column; justify-content: space-between;}
+        .card:hover { border-color: var(--axe-neon); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(204, 255, 0, 0.1); }
+        .card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 15px; transition: transform 0.5s; }
+        .card:hover img { transform: scale(1.05); }
+        .card h3 { font-size: 1.3em; margin-bottom: 5px; }
+        .price { font-size: 1.5em; font-weight: 900; color: var(--axe-neon); margin: 15px 0; }
+        .btn { padding: 12px 20px; background: var(--axe-neon); color: #000; font-weight: 900; border: none; cursor: pointer; border-radius: 4px; transition: 0.3s; width: 100%; text-transform: uppercase;}
+        .btn:hover { background: #fff; }
+
+        /* Cart & Checkout Elements */
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 350px; max-width: 100%; height: 100vh; background: #111; z-index: 1001; transition: 0.4s; padding: 20px; display: flex; flex-direction: column; border-left: 1px solid #333; }
+        .cart-sidebar.active { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
+        .close-cart { background: none; border: none; color: #fff; font-size: 1.5em; cursor: pointer; }
+        .cart-items { flex-grow: 1; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #1a1a1a; padding: 10px; border-radius: 5px; }
+        .cart-item img { width: 50px; height: 50px; object-fit: contain; }
+        .cart-item-info { flex-grow: 1; margin-left: 10px; }
+        .cart-item-title { font-size: 0.9em; font-weight: bold; }
+        .cart-item-price { color: var(--axe-neon); font-size: 0.9em; }
+        .remove-btn { background: red; color: white; border: none; padding: 5px 8px; border-radius: 3px; cursor: pointer; font-size: 0.8em; }
+        .cart-footer { border-top: 1px solid #333; padding-top: 15px; }
+        .total { display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-bottom: 15px; }
+
+        .checkout-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.8); z-index: 1002; justify-content: center; align-items: center; }
+        .checkout-content { background: #151515; padding: 30px; border-radius: 8px; width: 400px; max-width: 90%; border: 1px solid var(--axe-neon); }
+        .checkout-content input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; }
+        .checkout-content input:focus { outline: none; border-color: var(--axe-neon); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .overlay.active { display: block; }
+        
+        @media (max-width: 768px) { nav { padding: 15px; } .nav-links { display: none; } /* Có thể thêm menu hamburger cho mobile sau */ }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-left">
-                <h1>Nguyễn Hoàng Nam</h1>
-                <p>Quản lý Vận hành & Phân tích Kinh doanh</p>
-            </div>
-            <div class="header-right">
-                <div>📍 Đà Nẵng, Việt Nam</div>
-                <div>📧 email.cua.ban@gmail.com</div>
-                <div>📱 +84 123 456 789</div>
-            </div>
+
+    <nav>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Axe_logo.svg" alt="AXE Logo" width="60">
+        
+        <div class="nav-links">
+            <a href="#home">Trang chủ</a>
+            <a href="#brand">Thương hiệu</a>
+            <a href="#products">Shopping</a>
+            <a href="cv.html" class="cv-link">Cá nhân (CV)</a>
         </div>
 
-        <div class="grid-2-col">
-            <div class="main-col">
-                <h2>Kinh nghiệm làm việc</h2>
-                
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Quản lý Vận hành Khách sạn</span>
-                        <span class="item-date">2023 – Hiện tại</span>
-                    </div>
-                    <div class="item-subtitle">Đà Nẵng, Việt Nam</div>
-                    <ul>
-                        <li>Chịu trách nhiệm quản lý toàn bộ hoạt động vận hành hàng ngày, đảm bảo chất lượng dịch vụ và trải nghiệm lưu trú.</li>
-                        <li>Tối ưu hóa doanh thu và tỷ lệ lấp phòng trên các nền tảng OTA lớn (Agoda, Booking.com, Traveloka).</li>
-                        <li>Theo dõi biến động thị trường du lịch Đà Nẵng để điều chỉnh chiến lược giá linh hoạt.</li>
-                        <li>Xử lý các tình huống phát sinh, đào tạo và giám sát đội ngũ nhân sự.</li>
-                    </ul>
-                </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒<span class="cart-count" id="cart-counter">0</span>
+        </div>
+    </nav>
 
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Đầu tư & Phân tích thị trường Web3</span>
-                        <span class="item-date">2022 – Hiện tại</span>
-                    </div>
-                    <div class="item-subtitle">Làm việc tự do</div>
-                    <ul>
-                        <li>Nghiên cứu nền tảng công nghệ, phân tích dữ liệu on-chain và giao dịch (Trading) tài sản số.</li>
-                        <li>Trải nghiệm sớm các hệ sinh thái (Testnet/Mainnet) để khai thác nguồn doanh thu từ các chiến dịch Airdrop.</li>
-                        <li>Thiết lập kỷ luật quản lý vốn và kiểm soát rủi ro trong thị trường có biên độ giao động lớn.</li>
-                    </ul>
-                </div>
+    <section class="hero" id="home">
+        <h1>SẠCH THƠM 48 GIỜ</h1>
+    </section>
 
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Kinh doanh Sản phẩm Digital & Quản lý Cửa hàng Sỉ</span>
-                        <span class="item-date">2019 – 2023</span>
-                    </div>
-                    <div class="item-subtitle">Thị trường Nga & Toàn cầu</div>
-                    <ul>
-                        <li>Xây dựng và quản lý mô hình kinh doanh sản phẩm digital (PSN, Xbox, Steam) và tối ưu hóa cổng thanh toán quốc tế.</li>
-                        <li>Điều hành hoạt động bán buôn hàng may mặc tại Nga; quản lý chuỗi cung ứng và đàm phán trực tiếp với xưởng may.</li>
-                    </ul>
-                </div>
+    <section class="usp-section" id="brand">
+        <div class="usp-item">
+            <span class="usp-icon">⏱️</span>
+            <h3>Bảo vệ 48 giờ</h3>
+            <p>Ngăn mùi cơ thể vượt trội, giúp bạn sảng khoái suốt ngày dài năng động.</p>
+        </div>
+        <div class="usp-item">
+            <span class="usp-icon">💎</span>
+            <h3>Hương nước hoa</h3>
+            <p>Được tinh chế bởi các chuyên gia điều hương hàng đầu thế giới.</p>
+        </div>
+        <div class="usp-item">
+            <span class="usp-icon">👕</span>
+            <h3>Khô thoáng</h3>
+            <p>Công thức cải tiến không gây ố vàng hay để lại vệt trắng trên áo.</p>
+        </div>
+    </section>
 
-                <h2>Học vấn & Nghiên cứu</h2>
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Cử nhân Quản trị Kinh doanh</span>
-                        <span class="item-date">2023 – Hiện tại</span>
-                    </div>
-                    <div class="item-subtitle">Đại học Duy Tân</div>
-                    <p>Dự án: Nghiên cứu chuyên sâu về "Tác động của hội chứng FOMO đến quyết định nâng cấp thiết bị công nghệ của thế hệ Gen Z tại Việt Nam".</p>
-                </div>
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Cử nhân Công nghệ Thông tin (IT)</span>
-                        <span class="item-date">2019 – 2023</span>
-                    </div>
-                    <div class="item-subtitle">Đại học Hữu nghị các Dân tộc Nga (RUDN University)</div>
-                </div>
+    <section class="products" id="products">
+        <h2 class="section-title">BỘ SƯU TẬP</h2>
+        <div class="product-grid" id="product-list">
             </div>
+    </section>
 
-            <div class="side-col">
-                <h2>Kỹ năng & Ngoại ngữ</h2>
-                <div class="item">
-                    <div class="item-title">Ngoại ngữ</div>
-                    <p>🇷🇺 Tiếng Nga: Bản xứ (Chứng chỉ TRKI B1)<br>🇬🇧 Tiếng Anh: Thành thạo</p>
-                </div>
-                <div class="item">
-                    <div class="item-title">Chuyên môn</div>
-                    <div class="tag-container">
-                        <span class="tag">Quản trị OTA</span>
-                        <span class="tag">Phân tích dữ liệu</span>
-                        <span class="tag">Logistics & Supply Chain</span>
-                        <span class="tag">Thương mại điện tử</span>
-                        <span class="tag">Microsoft Office (MOS)</span>
-                    </div>
-                </div>
-                
-                <h2>Sở thích & Đam mê</h2>
-                <div class="hobby-list">
-                    <p>♟️ <b>Cờ vua:</b> Rèn luyện tư duy logic, nghiên cứu chiến thuật khai cuộc (Mục tiêu 1500 Elo).</p>
-                    <p>💻 <b>Công nghệ:</b> Cập nhật kiến thức phần cứng máy tính, lắp ráp và tối ưu hóa hiệu năng PC.</p>
-                    <p>🎮 <b>Giải trí:</b> Phân tích cơ chế tự động hóa và quản lý tài nguyên qua các tựa game chiến thuật (Factorio, Civ VI).</p>
-                    <p>🏋️ <b>Thể hình:</b> Duy trì kỷ luật qua các bài tập kháng lực và tối ưu dinh dưỡng phát triển cơ bắp.</p>
-                    <p>📈 <b>Kinh tế vĩ mô:</b> Tìm hiểu về hệ thống kinh tế toàn cầu và dòng chảy thương mại.</p>
-                </div>
-            </div>
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>GIỎ HÀNG</h2>
+            <button class="close-cart" onclick="toggleCart()">✖</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total"><span>Tổng cộng:</span> <span id="cart-total">0₫</span></div>
+            <button class="btn" onclick="openCheckout()">THANH TOÁN</button>
         </div>
     </div>
+
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-content">
+            <h2 style="margin-bottom: 20px; color: var(--axe-neon);">Thông tin giao hàng</h2>
+            <input type="text" id="cus-name" placeholder="Họ và tên" required>
+            <input type="text" id="cus-phone" placeholder="Số điện thoại" required>
+            <input type="text" id="cus-address" placeholder="Địa chỉ giao hàng chi tiết" required>
+            <button class="btn" onclick="submitOrder()">XÁC NHẬN ĐẶT HÀNG</button>
+            <button class="btn" style="background: #444; color: #fff; margin-top: 10px;" onclick="closeCheckout()">HỦY BỎ</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "AXE Apollo", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154687-1215160-png.png", desc: "Hương Gỗ Đàn Hương & Xô Thơm" },
+            { id: 2, name: "AXE Dark Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154724-1215168-png.png", desc: "Hương Sô-cô-la Đen Quyến Rũ" },
+            { id: 3, name: "AXE Black", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154700-1215164-png.png", desc: "Hương Cam Bergamot & Tuyết Tùng" },
+            { id: 4, name: "AXE Ice Chill", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154748-1215171-png.png", desc: "Hương Bạc Hà & Chanh Tuyết" },
+            { id: 5, name: "AXE Gold Temptation", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/vietnam/pack_shot/8934839154762-1215175-png.png", desc: "Hương Cam Citrus & Hổ Phách" },
+            { id: 6, name: "AXE Click", price: 95000, img: "https://www.axe.com/content/dam/unilever/axe/global/pack_shot/8717163693245.png", desc: "Hương Gia Vị & Gỗ Ấm" }
+        ];
+
+        let cart = [];
+
+        const productList = document.getElementById('product-list');
+        products.forEach(p => {
+            productList.innerHTML += `
+                <div class="card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p style="color: #a0a0a0; font-size: 0.9em;">${p.desc}</p>
+                    <div class="price">${p.price.toLocaleString('vi-VN')}₫</div>
+                    <button class="btn" onclick="addToCart(${p.id})">THÊM VÀO GIỎ</button>
+                </div>
+            `;
+        });
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            if(existingItem) existingItem.qty += 1;
+            else cart.push({ ...product, qty: 1 });
+            
+            updateCartUI();
+            document.getElementById('cart-sidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0, count = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                count += item.qty;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name} (x${item.qty})</div>
+                            <div class="cart-item-price">${(item.price * item.qty).toLocaleString('vi-VN')}₫</div>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem(${index})">Xóa</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById('cart-total').innerText = total.toLocaleString('vi-VN') + '₫';
+            document.getElementById('cart-counter').innerText = count;
+        }
+
+        function removeItem(index) { cart.splice(index, 1); updateCartUI(); }
+        function toggleCart() { 
+            document.getElementById('cart-sidebar').classList.toggle('active'); 
+            document.getElementById('overlay').classList.toggle('active'); 
+        }
+        
+        function openCheckout() {
+            if(cart.length === 0) return alert("Giỏ hàng đang trống!");
+            toggleCart();
+            document.getElementById('checkout-modal').style.display = 'flex';
+        }
+        function closeCheckout() { document.getElementById('checkout-modal').style.display = 'none'; }
+
+        function submitOrder() {
+            const name = document.getElementById('cus-name').value;
+            const phone = document.getElementById('cus-phone').value;
+            const address = document.getElementById('cus-address').value;
+
+            if(!name || !phone || !address) return alert("Vui lòng điền đủ thông tin!");
+            
+            alert(`🎉 Cảm ơn ${name} đã đặt hàng!\nChúng tôi sẽ liên hệ ${phone} để giao đến:\n${address}`);
+            
+            cart = []; updateCartUI(); closeCheckout();
+            document.getElementById('cus-name').value = '';
+            document.getElementById('cus-phone').value = '';
+            document.getElementById('cus-address').value = '';
+        }
+    </script>
 </body>
 </html>
